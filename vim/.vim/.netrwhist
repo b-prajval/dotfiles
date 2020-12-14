@@ -1,0 +1,12 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhistcnt =6
+let g:netrw_dirhist_6='/home/prajvalbadiger/training/assignment/phase1/ds/sorting_algs/selection_sort/hdr'
+let g:netrw_dirhist_5='/home/prajvalbadiger/training/expiriment/sorting_algs/merge_sort/src'
+let g:netrw_dirhist_4='/home/prajvalbadiger/training/expiriment/sorting_algs/merge_sort'
+let g:netrw_dirhist_3='/home/prajvalbadiger/training/expiriment/calculator/src'
+let g:netrw_dirhist_2='/home/prajvalbadiger/training/expiriment/calculator'
+let g:netrw_dirhist_1='/'
+let g:netrw_dirhist_0='/home/prajvalbadiger/.vim'
+let g:netrw_dirhist_9='/usr/src'
+let g:netrw_dirhist_8='/usr/src/linux-headers-5.4.0-53'
+let g:netrw_dirhist_7='/usr/src/linux-headers-5.4.0-53/arch'

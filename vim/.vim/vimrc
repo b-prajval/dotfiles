@@ -1,0 +1,97 @@
+" start from where you left before
+	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+
+" set $RC to access vimrc file within vim
+	let $RC="$HOME/.vim/vimrc"
+
+" color column indicating max char in a line for c files
+	autocmd BufNewFile,BufRead *.c set colorcolumn=80
+	autocmd BufNewFile,BufRead *.h set colorcolumn=80
+
+" set line number and relative line numbers
+	set number relativenumber
+" No statusbar
+	set laststatus=0
+
+" Enable auto-completion
+	set wildmenu
+	set wildmode=longest,list,full
+" syntax coloring 
+	syntax on
+	set background=dark
+	colorscheme gruvbox
+
+" set tabstop to 4 and shiftwidth to 4 
+	set tabstop=4 shiftwidth=4
+
+" indentation
+	set autoindent smartindent cindent
+
+" Search settings
+	set incsearch
+	set ignorecase
+
+" no text wrap
+	set nowrap
+
+" mouse enable
+	set mouse=a
+
+" show command at the bottom right of the screen
+	set showcmd
+
+" split panes to right and below
+	set splitright splitbelow
+
+" Windows navigation
+	nnoremap <C-j> <C-w>j
+	nnoremap <C-k> <C-w>k
+	nnoremap <C-l> <C-w>l
+	nnoremap <C-h> <C-w>h
+	nnoremap <C-f> <C-w>F<C-w>L
+
+" terminal in vertical mode
+	command! Vterm :vert term 
+
+" Extras
+	inoremap jj <ESC>
+	nnoremap ; :
+
+" Generate tags file from within vim 
+	function! MakeTags()
+		:!ctags -R . && echo "tags generated"
+	endfunction
+
+	nnoremap mt :call MakeTags()<CR>
+
+" Presentation mode
+	function SetvimPresentation()
+		set nonu
+		set nornu
+		nnoremap <buffer> <Right> :n<CR>
+		nnoremap <buffer> <Left> :N<CR>
+	endfunction
+
+	autocmd BufNewFile,BufRead *.md call SetvimPresentation()
+
+" fix spellings backwards
+	function! FixLastSpelling()
+		normal! mm[s1z=`m
+	endfunction
+	nnoremap <space>sp :call FixLastSpelling()<CR>
+
+" make
+	function! RunMake()
+		:!clear; make --silent
+	endfunction
+
+	nnoremap <F9> :call RunMake()<CR>
+
+" tmux navigator
+	let g:tmux_navigator_no_mappings = 1
+
+	nnoremap <silent> <c-h> :TmuxNavigateLeft<cr>
+	nnoremap <silent> <c-j> :TmuxNavigateDown<cr>
+	nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
+	nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
+	nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
