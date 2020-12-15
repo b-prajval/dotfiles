@@ -118,4 +118,4 @@ fi
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
-source ./.git-prompt.sh
+source $HOME/.git-prompt.sh
