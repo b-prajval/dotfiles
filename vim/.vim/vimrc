@@ -10,12 +10,25 @@
 
 " set line number and relative line numbers
 	set number relativenumber
+
 " No statusbar
 	set laststatus=0
+
+" system clipboard
+	set clipboard=unnamed
+
+" show trailing white spaces and tabs
+	set listchars=tab:_\ ,trail:_
+	" show/hide trailing spaces and tabs
+	function! ListToggle()
+		:set list!
+	endfunction
+	nnoremap tl :call ListToggle()<CR>
 
 " Enable auto-completion
 	set wildmenu
 	set wildmode=longest,list,full
+
 " syntax coloring 
 	syntax on
 	set background=dark
@@ -84,7 +97,6 @@
 	function! RunMake()
 		:!clear; make --silent
 	endfunction
-
 	nnoremap <F9> :call RunMake()<CR>
 
 " tmux navigator
