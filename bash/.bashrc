@@ -115,7 +115,13 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+# git prompt for git repositories
+if [ -f ~/.git-prompt.sh ]; then
+    . ~/.git-prompt.sh
+fi
+
+# start tmux when terminal is launched
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
     tmux attach -t default || tmux new -s default
 fi
-source $HOME/.git-prompt.sh
