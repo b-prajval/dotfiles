@@ -68,6 +68,7 @@
 
 " Extras
 	inoremap jj <ESC>
+	inoremap JJ <ESC>
 	nnoremap ; :
 
 " Generate tags file from within vim 
@@ -86,12 +87,6 @@
 	endfunction
 
 	autocmd BufNewFile,BufRead *.md call SetvimPresentation()
-
-" fix spellings backwards
-	function! FixLastSpelling()
-		normal! mm[s1z=`m
-	endfunction
-	nnoremap <space>sp :call FixLastSpelling()<CR>
 
 " make
 	function! RunMake()
