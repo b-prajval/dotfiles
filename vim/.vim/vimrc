@@ -48,7 +48,7 @@
 	set nowrap
 
 " mouse enable
-	set mouse=a
+	" set mouse=a
 
 " show command at the bottom right of the screen
 	set showcmd
