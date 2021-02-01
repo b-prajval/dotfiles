@@ -15,7 +15,7 @@
 	set laststatus=0
 
 " system clipboard
-	set clipboard=unnamed
+	set clipboard=unnamedplus
 
 " show trailing white spaces and tabs
 	set listchars=tab:_\ ,trail:_
@@ -102,3 +102,18 @@
 	nnoremap <silent> <c-k> :TmuxNavigateUp<cr>
 	nnoremap <silent> <c-l> :TmuxNavigateRight<cr>
 	nnoremap <silent> <c-\> :TmuxNavigatePrevious<cr>
+
+" disable arrow keys
+	inoremap <left> <nop>
+	inoremap <right> <nop>
+	inoremap <up> <nop>
+	inoremap <down> <nop>
+
+	nnoremap <left> <nop>
+	nnoremap <right> <nop>
+	nnoremap <up> <nop>
+	nnoremap <down> <nop>
+
+" move by line on screen
+	nnoremap j gj
+	nnoremap k gk
