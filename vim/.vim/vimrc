@@ -1,3 +1,8 @@
+call plug#begin('~/.vim/plugged')
+	Plug 'morhetz/gruvbox'
+	Plug 'vim-scripts/AutoComplPop'
+	Plug 'christoomey/vim-tmux-navigator'
+call plug#end()
 " start from where you left before
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
