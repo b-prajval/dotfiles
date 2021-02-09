@@ -1,8 +1,23 @@
+" Plugins
 call plug#begin('~/.vim/plugged')
+
+	" gruvbox colorscheme
 	Plug 'morhetz/gruvbox'
+	" auto completion
 	Plug 'vim-scripts/AutoComplPop'
+	" vim tmux navigator
 	Plug 'christoomey/vim-tmux-navigator'
+	" fzf fuzzy file finder
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'junegunn/fzf.vim'
+	" air lines
+	" Plug 'vim-airline/vim-airline'
+	" Plug 'vim-airline/vim-airline-themes'
+	" NERDTree
+	Plug 'preservim/nerdtree'
+
 call plug#end()
+
 " start from where you left before
 	au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
@@ -122,3 +137,20 @@ call plug#end()
 " move by line on screen
 	nnoremap j gj
 	nnoremap k gk
+
+" fzf config
+	nnoremap <silent> <C-f> :Files<CR>
+
+" NERDTree options
+	" Toggle NERDTree 
+	nnoremap tt :NERDTreeToggle<cr>
+	"let g:NERDTreeDirArrowExpandable = '>'
+	"let g:NERDTreeDirArrowCollapsible = 'v'
+	" Start NERDTree and put the cursor back in the other window.
+		" autocmd VimEnter * NERDTree | wincmd p
+	" Exit Vim if NERDTree is the only window left.
+	autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+	     \ quit | endif
+
+	" Open the existing NERDTree on each new tab.
+	autocmd BufWinEnter * silent NERDTreeMirror
