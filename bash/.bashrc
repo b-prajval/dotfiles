@@ -56,7 +56,7 @@ if [ -n "$force_color_prompt" ]; then
 fi
 PROMPT_DIRTRIM=2 # shorten to path name to two dirs
 if [ "$color_prompt" = yes ]; then
-#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ '
+	#PS1='${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]$ '
 	PS1='\[\033[01;34m\]\w\[\033[00m\]'
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
@@ -123,7 +123,7 @@ fi
 
 # start tmux when terminal is launched
 if command -v tmux &> /dev/null && [ -z "$TMUX" ]; then
-    tmux attach -t default || tmux new -s default
+    tmux -u attach -t default || tmux -u new -s default
 fi
 # dmalloc library utility for bash
 function dmalloc { eval `command dmalloc -b $*`; }

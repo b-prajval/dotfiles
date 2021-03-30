@@ -1,20 +1,14 @@
 " Plugins
 call plug#begin('~/.vim/plugged')
-
-	" gruvbox colorscheme
-	Plug 'morhetz/gruvbox'
-	" auto completion
-	Plug 'vim-scripts/AutoComplPop'
-	" vim tmux navigator
-	Plug 'christoomey/vim-tmux-navigator'
-	" fzf fuzzy file finder
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+	Plug 'morhetz/gruvbox' 	" gruvbox colorscheme
+	Plug 'vim-scripts/AutoComplPop' 	" auto completion
+	Plug 'christoomey/vim-tmux-navigator' 	" vim tmux navigator
+	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } } " fzf fuzzy file finder
 	Plug 'junegunn/fzf.vim'
-	" vim sneak
-	Plug 'justinmk/vim-sneak'
-	" quick scope
-	Plug 'unblevable/quick-scope'
-
+	Plug 'justinmk/vim-sneak' 	" vim sneak
+	Plug 'unblevable/quick-scope' " quick scope
+	Plug 'raimondi/delimitmate' " auto closing brackets/quotes/...
+	Plug 'vim-syntastic/syntastic' " syntax checkings
 call plug#end()
 
 " start from where you left before
@@ -26,6 +20,7 @@ call plug#end()
 " color column indicating max char in a line for c files
 	autocmd BufNewFile,BufRead *.c set colorcolumn=80
 	autocmd BufNewFile,BufRead *.h set colorcolumn=80
+	autocmd BufNewFile,BufRead *.rst set colorcolumn=80
 
 " set line number and relative line numbers
 	set number relativenumber
@@ -35,7 +30,8 @@ call plug#end()
 
 " system clipboard
 	set clipboard=unnamedplus
-
+" Search for tags file
+	set tags=tags;/
 " show trailing white spaces and tabs
 	set listchars=tab:_\ ,trail:_
 	" show/hide trailing spaces and tabs
@@ -103,9 +99,12 @@ call plug#end()
 		set nornu
 		nnoremap <buffer> <Right> :n<CR>
 		nnoremap <buffer> <Left> :N<CR>
+		nnoremap <buffer> <space>l :n<CR>
+		nnoremap <buffer> <space>h :N<CR>
 	endfunction
 
-	autocmd BufNewFile,BufRead *.md call SetvimPresentation()
+"	autocmd BufNewFile,BufRead *.md call SetvimPresentation()
+	nnoremap <F5> :call SetvimPresentation()<CR>
 
 " make
 	function! RunMake()
@@ -146,3 +145,5 @@ call plug#end()
 		autocmd ColorScheme * highlight QuickScopePrimary guifg='#afff5f' gui=underline ctermfg=155 cterm=underline
 		autocmd ColorScheme * highlight QuickScopeSecondary guifg='#5fffff' gui=underline ctermfg=81 cterm=underline
 	augroup END
+
+let g:syntastic_c_include_dirs = ['../hdr/', './hdr/']
